@@ -21,10 +21,15 @@ This section explores the step-by-step methodology employed in the development a
 infections through the analysis of CT scan images.
 
 Data Handling:
+
 The data handling process employed several key libraries, including sklearn.model_selection for train-test splitting, and pandas for efficient data manipulation. The define_paths() function was esstential in organizing and gathering file paths along with their corresponding labels from a directory structure. Through the utilization of the split_data() function, the lung infection images were categorized into training, testing, and validation sets. To facilitate data preparation, the Keras library, a powerful deep learning API built on TensorFlow, was used. Particularly, the ImageDataGenerator class from Keras played a pivotal role in the creation of data generators. These generators proved essential for handling large datasets that do not fit into memory, enabling on-the-fly data augmentation, normalization, and batching during the neural network training process. 
+
 Creating the Model:
+
 To construct the models, we employed convolutional neural network (CNN) architectures using the Keras library, specialized for image datasets. One notable component of our approach involved the utilization of a pretrained VGG model, a type of CNN architecture renowned for its effectiveness in image-related tasks. We chose an efficient approach by using a pretrained model due to the resource-intensive nature of training deep networks with a high number of parameters. Additionally, we employed a Classifier class to define a simpler CNN network using Keras' sequential API. This model consists of convolutional layers, which play a pivotal role in capturing intricate patterns in the image dataset. Activation functions, particularly Rectified Linear Unit (ReLU), are strategically applied to introduce non-linearity and enable the model to discern complex patterns.
+
 Training & Testing:
+
 Using the Classifier class defined earlier when creating the model, will be now used to train the model and we inputted the configuration parameters for the model. The fit method is used to train the model. It takes the training and validation generators, the number of steps per epoch, the number of epochs, and the specified callbacks. The training progress and performance metrics are stored in the history variable. Two callback functions are defined. ModelCheckpoint saves the model with the lowest validation loss during training. EarlyStopping stops the training if the validation loss does not decrease for a specified number of epochs (patience). To test the model ImageDataGenerator is initialized and using the saved VGG model. 
 
 FUTURE DEVELOPMENT
